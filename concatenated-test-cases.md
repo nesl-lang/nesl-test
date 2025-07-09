@@ -1467,28 +1467,40 @@ ______________________________ nesl-test/tests/unit/block-parser/basics/001_empt
 {}
 =========nesl
 ```
-______________________________ nesl-test/tests/unit/block-parser/basics/002_empty_array.json
+______________________________ nesl-test/tests/unit/block-parser/basics/002_single_key.json
 ```json
 [
-  []
+  {
+    "key": "value"
+  }
 ]
 ```
-______________________________ nesl-test/tests/unit/block-parser/basics/002_empty_array.nesl
+______________________________ nesl-test/tests/unit/block-parser/basics/002_single_key.nesl
 ```nesl
 <<<<<<<<<nesl
-[]
+{
+  key = R"""pv(value)pv"""
+}
 =========nesl
 ```
-______________________________ nesl-test/tests/unit/block-parser/basics/003_empty_multiline.json
+______________________________ nesl-test/tests/unit/block-parser/basics/003_multiple_keys.json
 ```json
 [
-  ""
+  {
+    "first": "value one",
+    "second": "value two",
+    "third": "value three"
+  }
 ]
 ```
-______________________________ nesl-test/tests/unit/block-parser/basics/003_empty_multiline.nesl
+______________________________ nesl-test/tests/unit/block-parser/basics/003_multiple_keys.nesl
 ```nesl
 <<<<<<<<<nesl
-()
+{
+  first = R"""pv(value one)pv"""
+  second = R"""pv(value two)pv"""
+  third = R"""pv(value three)pv"""
+}
 =========nesl
 ```
 ______________________________ nesl-test/tests/unit/block-parser/basics/004_single_key.json
@@ -1505,6 +1517,229 @@ ______________________________ nesl-test/tests/unit/block-parser/basics/004_sing
 {
   key = R"""pv(value)pv"""
 }
+=========nesl
+```
+______________________________ nesl-test/tests/unit/block-parser/basics/005_array_value.json
+```json
+[
+  {
+    "items": ["first item", "second item"]
+  }
+]
+```
+______________________________ nesl-test/tests/unit/block-parser/basics/005_array_value.nesl
+```nesl
+<<<<<<<<<nesl
+{
+  items = [
+    - R"""pv(first item)pv"""
+    - R"""pv(second item)pv"""
+  ]
+}
+=========nesl
+```
+______________________________ nesl-test/tests/unit/block-parser/basics/006_multiline_value.json
+```json
+[
+  {
+    "message": "line one\nline two\nline three"
+  }
+]
+```
+______________________________ nesl-test/tests/unit/block-parser/basics/006_multiline_value.nesl
+```nesl
+<<<<<<<<<nesl
+{
+  message = (
+    R"""pv(line one)pv"""
+    R"""pv(line two)pv"""
+    R"""pv(line three)pv"""
+  )
+}
+=========nesl
+```
+______________________________ nesl-test/tests/unit/block-parser/basics/007_mixed_values.json
+```json
+[
+  {
+    "name": "test object",
+    "nested": {
+      "inner": "nested value"
+    },
+    "list": ["item"],
+    "multi": "first\nsecond"
+  }
+]
+```
+______________________________ nesl-test/tests/unit/block-parser/basics/007_mixed_values.nesl
+```nesl
+<<<<<<<<<nesl
+{
+  name = R"""pv(test object)pv"""
+  nested = {
+    inner = R"""pv(nested value)pv"""
+  }
+  list = [
+    - R"""pv(item)pv"""
+  ]
+  multi = (
+    R"""pv(first)pv"""
+    R"""pv(second)pv"""
+  )
+}
+=========nesl
+```
+______________________________ nesl-test/tests/unit/block-parser/state-errors/001_bare_string_in_object.json
+```json
+{
+  "errors": [
+    {
+      "line": 4,
+      "code": "invalid_context",
+      "message": "String literal not allowed without assignment in object context",
+      "content": "  R\"\"\"pv(this string has no key assignment)pv\"\"\"",
+      "context": "{\n  valid = R\"\"\"pv(properly assigned)pv\"\"\"\n  R\"\"\"pv(this string has no key assignment)pv\"\"\"\n  another = R\"\"\"pv(valid again)pv\"\"\"\n}"
+    }
+  ]
+}
+```
+______________________________ nesl-test/tests/unit/block-parser/state-errors/001_bare_string_in_object.nesl
+```nesl
+<<<<<<<<<nesl
+{
+  valid = R"""pv(properly assigned)pv"""
+  R"""pv(this string has no key assignment)pv"""
+  another = R"""pv(valid again)pv"""
+}
+=========nesl
+```
+______________________________ nesl-test/tests/unit/block-parser/state-errors/007_empty_assignment.json
+```json
+{
+  "errors": [
+    {
+      "line": 4,
+      "code": "invalid_context", 
+      "message": "Assignment requires value on same line",
+      "content": "  empty =",
+      "context": "{\n  valid = R\"\"\"pv(has value)pv\"\"\"\n  empty =\n  another = R\"\"\"pv(also valid)pv\"\"\"\n}"
+    }
+  ]
+}
+```
+______________________________ nesl-test/tests/unit/block-parser/state-errors/007_empty_assignment.nesl
+```nesl
+<<<<<<<<<nesl
+{
+  valid = R"""pv(has value)pv"""
+  empty =
+  another = R"""pv(also valid)pv"""
+}
+=========nesl
+```
+______________________________ nesl-test/tests/unit/block-parser/structure-errors/001_root_array.json
+```json
+{
+  "errors": [
+    {
+      "line": 1,
+      "code": "root_must_be_object",
+      "message": "NESL blocks must contain a single root object. Found array instead",
+      "content": "[",
+      "context": "[\n]"
+    }
+  ]
+}
+```
+______________________________ nesl-test/tests/unit/block-parser/structure-errors/001_root_array.nesl
+```nesl
+<<<<<<<<<nesl
+[]
+=========nesl
+```
+______________________________ nesl-test/tests/unit/block-parser/structure-errors/002_root_multiline.json
+```json
+{
+  "errors": [
+    {
+      "line": 1,
+      "code": "root_must_be_object",
+      "message": "NESL blocks must contain a single root object. Found multiline instead",
+      "content": "(",
+      "context": "(\n)"
+    }
+  ]
+}
+```
+______________________________ nesl-test/tests/unit/block-parser/structure-errors/002_root_multiline.nesl
+```nesl
+<<<<<<<<<nesl
+()
+=========nesl
+```
+______________________________ nesl-test/tests/unit/block-parser/structure-errors/003_root_string.json
+```json
+{
+  "errors": [
+    {
+      "line": 2,
+      "code": "root_must_be_object",
+      "message": "NESL blocks must contain a single root object. Found string instead",
+      "content": "R\"\"\"pv(bare string at root level)pv\"\"\"",
+      "context": "<<<<<<<<<nesl\nR\"\"\"pv(bare string at root level)pv\"\"\"\n=========nesl"
+    }
+  ]
+}
+```
+______________________________ nesl-test/tests/unit/block-parser/structure-errors/003_root_string.nesl
+```nesl
+<<<<<<<<<nesl
+R"""pv(bare string at root level)pv"""
+=========nesl
+```
+______________________________ nesl-test/tests/unit/block-parser/structure-errors/004_multiple_roots.json
+```json
+{
+  "errors": [
+    {
+      "line": 5,
+      "code": "multiple_roots",
+      "message": "Only one root object allowed per block",
+      "content": "{",
+      "context": "  first = R\"\"\"pv(object one)pv\"\"\"\n}\n{\n  second = R\"\"\"pv(object two)pv\"\"\"\n}"
+    }
+  ]
+}
+```
+______________________________ nesl-test/tests/unit/block-parser/structure-errors/004_multiple_roots.nesl
+```nesl
+<<<<<<<<<nesl
+{
+  first = R"""pv(object one)pv"""
+}
+{
+  second = R"""pv(object two)pv"""
+}
+=========nesl
+```
+______________________________ nesl-test/tests/unit/block-parser/structure-errors/005_root_dash.json
+```json
+{
+  "errors": [
+    {
+      "line": 2,
+      "code": "root_must_be_object",
+      "message": "NESL blocks must contain a single root object. Found array element instead",
+      "content": "- R\"\"\"pv(dash not allowed at root)pv\"\"\"",
+      "context": "<<<<<<<<<nesl\n- R\"\"\"pv(dash not allowed at root)pv\"\"\"\n=========nesl"
+    }
+  ]
+}
+```
+______________________________ nesl-test/tests/unit/block-parser/structure-errors/005_root_dash.nesl
+```nesl
+<<<<<<<<<nesl
+- R"""pv(dash not allowed at root)pv"""
 =========nesl
 ```
 ______________________________ nesl-test/tests/unit/string-literals/001_line_extraction.txt

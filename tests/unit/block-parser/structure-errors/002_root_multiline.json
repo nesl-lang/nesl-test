@@ -1,0 +1,11 @@
+{
+  "errors": [
+    {
+      "line": 1,
+      "code": "root_must_be_object",
+      "message": "NESL blocks must contain a single root object. Found multiline instead",
+      "content": "(",
+      "context": "(\n)"
+    }
+  ]
+}
