@@ -1,0 +1,17 @@
+{
+  "blocks": [
+    {
+      "content": "{\n  first = R\"\"\"pv(block)pv\"\"\"\n}",
+      "startLine": 1
+    },
+    {
+      "content": "[\n  - R\"\"\"pv(second block)pv\"\"\"\n]",
+      "startLine": 10
+    },
+    {
+      "content": "{\n  third = {\n    nested = R\"\"\"pv(value)pv\"\"\"\n  }\n}",
+      "startLine": 17
+    }
+  ],
+  "errors": []
+}
