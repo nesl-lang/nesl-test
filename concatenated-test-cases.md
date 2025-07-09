@@ -1589,6 +1589,592 @@ ______________________________ nesl-test/tests/unit/block-parser/basics/007_mixe
 }
 =========nesl
 ```
+______________________________ nesl-test/tests/unit/block-parser/edge-cases/001_duplicate_keys.json
+```json
+{
+  "errors": [
+    {
+      "line": 4,
+      "code": "duplicate_key",
+      "message": "Duplicate key 'key' (previously defined on line 3)",
+      "content": "  key = R\"\"\"pv(second)pv\"\"\"",
+      "context": "{\n  key = R\"\"\"pv(first)pv\"\"\"\n  key = R\"\"\"pv(second)pv\"\"\"\n  other = R\"\"\"pv(value)pv\"\"\"\n  key = R\"\"\"pv(third)pv\"\"\""
+    },
+    {
+      "line": 6,
+      "code": "duplicate_key",
+      "message": "Duplicate key 'key' (previously defined on line 4)",
+      "content": "  key = R\"\"\"pv(third)pv\"\"\"",
+      "context": "  key = R\"\"\"pv(second)pv\"\"\"\n  other = R\"\"\"pv(value)pv\"\"\"\n  key = R\"\"\"pv(third)pv\"\"\"\n}\n=========nesl"
+    }
+  ]
+}
+```
+______________________________ nesl-test/tests/unit/block-parser/edge-cases/001_duplicate_keys.nesl
+```nesl
+<<<<<<<<<nesl
+{
+  key = R"""pv(first)pv"""
+  key = R"""pv(second)pv"""
+  other = R"""pv(value)pv"""
+  key = R"""pv(third)pv"""
+}
+=========nesl
+```
+______________________________ nesl-test/tests/unit/block-parser/edge-cases/002_whitespace_only_multiline.json
+```json
+[
+  {
+    "text": "line 1\nline 2\nline 3"
+  }
+]
+```
+______________________________ nesl-test/tests/unit/block-parser/edge-cases/002_whitespace_only_multiline.nesl
+```nesl
+<<<<<<<<<nesl
+{
+  text = (
+    R"""pv(line 1)pv"""
+    
+    R"""pv(line 2)pv"""
+        
+    R"""pv(line 3)pv"""
+  )
+}
+=========nesl
+```
+______________________________ nesl-test/tests/unit/block-parser/edge-cases/003_unicode_keys.json
+```json
+[
+  {
+    "café": "coffee",
+    "日本語": "Japanese",
+    "🚀": "rocket"
+  }
+]
+```
+______________________________ nesl-test/tests/unit/block-parser/edge-cases/003_unicode_keys.nesl
+```nesl
+<<<<<<<<<nesl
+{
+  café = R"""pv(coffee)pv"""
+  日本語 = R"""pv(Japanese)pv"""
+  🚀 = R"""pv(rocket)pv"""
+}
+=========nesl
+```
+______________________________ nesl-test/tests/unit/block-parser/edge-cases/004_long_key_at_limit.json
+```json
+[
+  {
+    "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ01234567": "256 chars exactly"
+  }
+]
+```
+______________________________ nesl-test/tests/unit/block-parser/edge-cases/004_long_key_at_limit.nesl
+```nesl
+<<<<<<<<<nesl
+{
+  abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ01234567 = R"""pv(256 chars exactly)pv"""
+}
+=========nesl
+```
+______________________________ nesl-test/tests/unit/block-parser/edge-cases/005_key_over_limit.json
+```json
+{
+  "errors": [
+    {
+      "line": 3,
+      "code": "key_too_long",
+      "message": "Key exceeds maximum length of 256 characters",
+      "content": "  abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ012345678 = R\"\"\"pv(257 chars)pv\"\"\"",
+      "context": "<<<<<<<<<nesl\n{\n  abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ012345678 = R\"\"\"pv(257 chars)pv\"\"\"\n}\n=========nesl"
+    }
+  ]
+}
+```
+______________________________ nesl-test/tests/unit/block-parser/edge-cases/005_key_over_limit.nesl
+```nesl
+<<<<<<<<<nesl
+{
+  abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ012345678 = R"""pv(257 chars)pv"""
+}
+=========nesl
+```
+______________________________ nesl-test/tests/unit/block-parser/edge-cases/006_custom_delimiters.json
+```json
+{
+  "config": {
+    "blockStart": "<<<START>>>",
+    "blockEnd": "===END===",
+    "stringOpen": "%%%[",
+    "stringClose": "]%%%"
+  },
+  "expected": [
+    {
+      "key": "custom string"
+    }
+  ],
+  "errors": []
+}
+```
+______________________________ nesl-test/tests/unit/block-parser/edge-cases/006_custom_delimiters.nesl
+```nesl
+<<<START>>>
+{
+  key = %%%[custom string]%%%
+}
+===END===
+```
+______________________________ nesl-test/tests/unit/block-parser/edge-cases/007_unclosed_at_eof.json
+```json
+{
+  "errors": [
+    {
+      "line": 6,
+      "code": "eof_unexpected",
+      "message": "Unexpected end of file (expected closing delimiter for array)",
+      "content": "",
+      "context": "{\n  nested = {\n    deep = [\n      - R\"\"\"pv(never closed)pv\"\"\"\n"
+    }
+  ]
+}
+```
+______________________________ nesl-test/tests/unit/block-parser/edge-cases/007_unclosed_at_eof.nesl
+```nesl
+<<<<<<<<<nesl
+{
+  nested = {
+    deep = [
+      - R"""pv(never closed)pv"""
+```
+______________________________ nesl-test/tests/unit/block-parser/nesting/001_object_in_object.json
+```json
+[
+  {
+    "outer": {
+      "inner": "nested value",
+      "deep": {
+        "deeper": "two levels"
+      }
+    }
+  }
+]
+```
+______________________________ nesl-test/tests/unit/block-parser/nesting/001_object_in_object.nesl
+```nesl
+<<<<<<<<<nesl
+{
+  outer = {
+    inner = R"""pv(nested value)pv"""
+    deep = {
+      deeper = R"""pv(two levels)pv"""
+    }
+  }
+}
+=========nesl
+```
+______________________________ nesl-test/tests/unit/block-parser/nesting/002_array_in_object.json
+```json
+[
+  {
+    "items": ["first", "second"],
+    "nested": {
+      "list": ["inner item"]
+    }
+  }
+]
+```
+______________________________ nesl-test/tests/unit/block-parser/nesting/002_array_in_object.nesl
+```nesl
+<<<<<<<<<nesl
+{
+  items = [
+    - R"""pv(first)pv"""
+    - R"""pv(second)pv"""
+  ]
+  nested = {
+    list = [
+      - R"""pv(inner item)pv"""
+    ]
+  }
+}
+=========nesl
+```
+______________________________ nesl-test/tests/unit/block-parser/nesting/003_multiline_in_object.json
+```json
+[
+  {
+    "description": "line 1\nline 2",
+    "nested": {
+      "text": "nested multiline"
+    }
+  }
+]
+```
+______________________________ nesl-test/tests/unit/block-parser/nesting/003_multiline_in_object.nesl
+```nesl
+<<<<<<<<<nesl
+{
+  description = (
+    R"""pv(line 1)pv"""
+    R"""pv(line 2)pv"""
+  )
+  nested = {
+    text = (
+      R"""pv(nested multiline)pv"""
+    )
+  }
+}
+=========nesl
+```
+______________________________ nesl-test/tests/unit/block-parser/nesting/004_object_in_array.json
+```json
+[
+  {
+    "items": [
+      {
+        "id": "1",
+        "name": "first"
+      },
+      {
+        "id": "2",
+        "name": "second"
+      }
+    ]
+  }
+]
+```
+______________________________ nesl-test/tests/unit/block-parser/nesting/004_object_in_array.nesl
+```nesl
+<<<<<<<<<nesl
+{
+  items = [
+    - {
+      id = R"""pv(1)pv"""
+      name = R"""pv(first)pv"""
+    }
+    - {
+      id = R"""pv(2)pv"""
+      name = R"""pv(second)pv"""
+    }
+  ]
+}
+=========nesl
+```
+______________________________ nesl-test/tests/unit/block-parser/nesting/005_array_in_array.json
+```json
+[
+  {
+    "matrix": [
+      ["1,1", "1,2"],
+      ["2,1", "2,2"]
+    ]
+  }
+]
+```
+______________________________ nesl-test/tests/unit/block-parser/nesting/005_array_in_array.nesl
+```nesl
+<<<<<<<<<nesl
+{
+  matrix = [
+    - [
+      - R"""pv(1,1)pv"""
+      - R"""pv(1,2)pv"""
+    ]
+    - [
+      - R"""pv(2,1)pv"""
+      - R"""pv(2,2)pv"""
+    ]
+  ]
+}
+=========nesl
+```
+______________________________ nesl-test/tests/unit/block-parser/nesting/006_multiline_in_array.json
+```json
+[
+  {
+    "items": [
+      "line 1\nline 2",
+      "regular string"
+    ]
+  }
+]
+```
+______________________________ nesl-test/tests/unit/block-parser/nesting/006_multiline_in_array.nesl
+```nesl
+<<<<<<<<<nesl
+{
+  items = [
+    - (
+      R"""pv(line 1)pv"""
+      R"""pv(line 2)pv"""
+    )
+    - R"""pv(regular string)pv"""
+  ]
+}
+=========nesl
+```
+______________________________ nesl-test/tests/unit/block-parser/nesting/007_mixed_deep_nesting.json
+```json
+[
+  {
+    "data": [
+      {
+        "info": {
+          "items": [
+            {
+              "value": "deep"
+            }
+          ]
+        }
+      }
+    ]
+  }
+]
+```
+______________________________ nesl-test/tests/unit/block-parser/nesting/007_mixed_deep_nesting.nesl
+```nesl
+<<<<<<<<<nesl
+{
+  data = [
+    - {
+      info = {
+        items = [
+          - {
+            value = R"""pv(deep)pv"""
+          }
+        ]
+      }
+    }
+  ]
+}
+=========nesl
+```
+______________________________ nesl-test/tests/unit/block-parser/nesting/008_max_nesting_depth.json
+```json
+[
+  {
+    "l1": {
+      "l2": {
+        "l3": {
+          "l4": {
+            "l5": "depth 5 - would need 95 more levels to hit limit"
+          }
+        }
+      }
+    }
+  }
+]
+```
+______________________________ nesl-test/tests/unit/block-parser/nesting/008_max_nesting_depth.nesl
+```nesl
+<<<<<<<<<nesl
+{
+  l1 = {
+    l2 = {
+      l3 = {
+        l4 = {
+          l5 = R"""pv(depth 5 - would need 95 more levels to hit limit)pv"""
+        }
+      }
+    }
+  }
+}
+=========nesl
+```
+______________________________ nesl-test/tests/unit/block-parser/nesting/009_max_nesting_exceeded.json
+```json
+[
+  {
+    "note": "This would need 101 levels to trigger max_depth_exceeded",
+    "deep": {
+      "nested": {
+        "structure": "Parser should track depth via context stack"
+      }
+    }
+  }
+]
+```
+______________________________ nesl-test/tests/unit/block-parser/nesting/009_max_nesting_exceeded.nesl
+```nesl
+<<<<<<<<<nesl
+{
+  note = R"""pv(This would need 101 levels to trigger max_depth_exceeded)pv"""
+  deep = {
+    nested = {
+      structure = R"""pv(Parser should track depth via context stack)pv"""
+    }
+  }
+}
+=========nesl
+```
+______________________________ nesl-test/tests/unit/block-parser/recovery/001_invalid_key_recovery.json
+```json
+{
+  "errors": [
+    {
+      "line": 4,
+      "code": "invalid_key",
+      "message": "Key contains invalid characters (whitespace)",
+      "content": "  bad key = R\"\"\"pv(space in key)pv\"\"\"",
+      "context": "{\n  valid1 = R\"\"\"pv(before error)pv\"\"\"\n  bad key = R\"\"\"pv(space in key)pv\"\"\"\n  valid2 = R\"\"\"pv(after error)pv\"\"\"\n  key=bad = R\"\"\"pv(equals in key)pv\"\"\""
+    },
+    {
+      "line": 6,
+      "code": "invalid_key",
+      "message": "Key contains invalid characters (equals sign)",
+      "content": "  key=bad = R\"\"\"pv(equals in key)pv\"\"\"",
+      "context": "  bad key = R\"\"\"pv(space in key)pv\"\"\"\n  valid2 = R\"\"\"pv(after error)pv\"\"\"\n  key=bad = R\"\"\"pv(equals in key)pv\"\"\"\n  valid3 = R\"\"\"pv(continues parsing)pv\"\"\"\n}"
+    }
+  ]
+}
+```
+______________________________ nesl-test/tests/unit/block-parser/recovery/001_invalid_key_recovery.nesl
+```nesl
+<<<<<<<<<nesl
+{
+  valid1 = R"""pv(before error)pv"""
+  bad key = R"""pv(space in key)pv"""
+  valid2 = R"""pv(after error)pv"""
+  key=bad = R"""pv(equals in key)pv"""
+  valid3 = R"""pv(continues parsing)pv"""
+}
+=========nesl
+```
+______________________________ nesl-test/tests/unit/block-parser/recovery/002_string_error_recovery.json
+```json
+{
+  "errors": [
+    {
+      "line": 4,
+      "code": "string_unterminated",
+      "message": "String literal starting with R\"\"\"pv( was not closed with )pv\"\"\" on the same line",
+      "content": "  unterminated = R\"\"\"pv(missing close",
+      "context": "{\n  valid1 = R\"\"\"pv(ok)pv\"\"\"\n  unterminated = R\"\"\"pv(missing close\n  valid2 = R\"\"\"pv(continues)pv\"\"\"\n  extra = R\"\"\"pv(ok)pv\"\"\" garbage after"
+    },
+    {
+      "line": 6,
+      "code": "content_after_string",
+      "message": "Non-whitespace content found after string literal closing delimiter",
+      "content": "  extra = R\"\"\"pv(ok)pv\"\"\" garbage after",
+      "context": "  unterminated = R\"\"\"pv(missing close\n  valid2 = R\"\"\"pv(continues)pv\"\"\"\n  extra = R\"\"\"pv(ok)pv\"\"\" garbage after\n  valid3 = R\"\"\"pv(still parsing)pv\"\"\"\n}"
+    }
+  ]
+}
+```
+______________________________ nesl-test/tests/unit/block-parser/recovery/002_string_error_recovery.nesl
+```nesl
+<<<<<<<<<nesl
+{
+  valid1 = R"""pv(ok)pv"""
+  unterminated = R"""pv(missing close
+  valid2 = R"""pv(continues)pv"""
+  extra = R"""pv(ok)pv""" garbage after
+  valid3 = R"""pv(still parsing)pv"""
+}
+=========nesl
+```
+______________________________ nesl-test/tests/unit/block-parser/recovery/003_nested_error_recovery.json
+```json
+{
+  "errors": [
+    {
+      "line": 6,
+      "code": "invalid_key",
+      "message": "Key contains invalid characters (whitespace)",
+      "content": "    bad key = R\"\"\"pv(error)pv\"\"\"",
+      "context": "  nested = {\n    valid = R\"\"\"pv(inside)pv\"\"\"\n    bad key = R\"\"\"pv(error)pv\"\"\"\n    after = R\"\"\"pv(continues)pv\"\"\"\n  }"
+    }
+  ]
+}
+```
+______________________________ nesl-test/tests/unit/block-parser/recovery/003_nested_error_recovery.nesl
+```nesl
+<<<<<<<<<nesl
+{
+  before = R"""pv(ok)pv"""
+  nested = {
+    valid = R"""pv(inside)pv"""
+    bad key = R"""pv(error)pv"""
+    after = R"""pv(continues)pv"""
+  }
+  outside = R"""pv(parent continues)pv"""
+}
+=========nesl
+```
+______________________________ nesl-test/tests/unit/block-parser/recovery/004_delimiter_mismatch_recovery.json
+```json
+{
+  "errors": [
+    {
+      "line": 5,
+      "code": "delimiter_mismatch",
+      "message": "Expected ] but found }",
+      "content": "  }",
+      "context": "  array = [\n    - R\"\"\"pv(item)pv\"\"\"\n  }\n  after_mismatch = R\"\"\"pv(unreachable)pv\"\"\"\n}"
+    }
+  ]
+}
+```
+______________________________ nesl-test/tests/unit/block-parser/recovery/004_delimiter_mismatch_recovery.nesl
+```nesl
+<<<<<<<<<nesl
+{
+  array = [
+    - R"""pv(item)pv"""
+  }
+  after_mismatch = R"""pv(unreachable)pv"""
+}
+=========nesl
+```
+______________________________ nesl-test/tests/unit/block-parser/recovery/005_multiple_errors_same_object.json
+```json
+{
+  "errors": [
+    {
+      "line": 3,
+      "code": "invalid_context",
+      "message": "String literal not allowed without assignment in object context",
+      "content": "  R\"\"\"pv(bare string)pv\"\"\"",
+      "context": "<<<<<<<<<nesl\n{\n  R\"\"\"pv(bare string)pv\"\"\"\n  - R\"\"\"pv(dash in object)pv\"\"\"\n  empty ="
+    },
+    {
+      "line": 4,
+      "code": "invalid_context",
+      "message": "Array element syntax not allowed in object context",
+      "content": "  - R\"\"\"pv(dash in object)pv\"\"\"",
+      "context": "{\n  R\"\"\"pv(bare string)pv\"\"\"\n  - R\"\"\"pv(dash in object)pv\"\"\"\n  empty =\n  bad key = R\"\"\"pv(space)pv\"\"\""
+    },
+    {
+      "line": 5,
+      "code": "invalid_context",
+      "message": "Assignment requires value on same line",
+      "content": "  empty =",
+      "context": "  R\"\"\"pv(bare string)pv\"\"\"\n  - R\"\"\"pv(dash in object)pv\"\"\"\n  empty =\n  bad key = R\"\"\"pv(space)pv\"\"\"\n  valid = R\"\"\"pv(one valid key)pv\"\"\""
+    },
+    {
+      "line": 6,
+      "code": "invalid_key",
+      "message": "Key contains invalid characters (whitespace)",
+      "content": "  bad key = R\"\"\"pv(space)pv\"\"\"",
+      "context": "  - R\"\"\"pv(dash in object)pv\"\"\"\n  empty =\n  bad key = R\"\"\"pv(space)pv\"\"\"\n  valid = R\"\"\"pv(one valid key)pv\"\"\"\n}"
+    }
+  ]
+}
+```
+______________________________ nesl-test/tests/unit/block-parser/recovery/005_multiple_errors_same_object.nesl
+```nesl
+<<<<<<<<<nesl
+{
+  R"""pv(bare string)pv"""
+  - R"""pv(dash in object)pv"""
+  empty =
+  bad key = R"""pv(space)pv"""
+  valid = R"""pv(one valid key)pv"""
+}
+=========nesl
+```
 ______________________________ nesl-test/tests/unit/block-parser/state-errors/001_bare_string_in_object.json
 ```json
 {
@@ -1610,6 +2196,132 @@ ______________________________ nesl-test/tests/unit/block-parser/state-errors/00
   valid = R"""pv(properly assigned)pv"""
   R"""pv(this string has no key assignment)pv"""
   another = R"""pv(valid again)pv"""
+}
+=========nesl
+```
+______________________________ nesl-test/tests/unit/block-parser/state-errors/002_assignment_in_array.json
+```json
+{
+  "errors": [
+    {
+      "line": 5,
+      "code": "invalid_context",
+      "message": "Assignment syntax not allowed in array context",
+      "content": "    key = R\"\"\"pv(invalid assignment)pv\"\"\"",
+      "context": "  items = [\n    - R\"\"\"pv(valid)pv\"\"\"\n    key = R\"\"\"pv(invalid assignment)pv\"\"\"\n    - R\"\"\"pv(valid)pv\"\"\"\n  ]"
+    }
+  ]
+}
+```
+______________________________ nesl-test/tests/unit/block-parser/state-errors/002_assignment_in_array.nesl
+```nesl
+<<<<<<<<<nesl
+{
+  items = [
+    - R"""pv(valid)pv"""
+    key = R"""pv(invalid assignment)pv"""
+    - R"""pv(valid)pv"""
+  ]
+}
+=========nesl
+```
+______________________________ nesl-test/tests/unit/block-parser/state-errors/003_dash_in_object.json
+```json
+{
+  "errors": [
+    {
+      "line": 4,
+      "code": "invalid_context",
+      "message": "Array element syntax not allowed in object context",
+      "content": "  - R\"\"\"pv(dash not allowed)pv\"\"\"",
+      "context": "{\n  valid = R\"\"\"pv(ok)pv\"\"\"\n  - R\"\"\"pv(dash not allowed)pv\"\"\"\n  another = R\"\"\"pv(ok)pv\"\"\"\n}"
+    }
+  ]
+}
+```
+______________________________ nesl-test/tests/unit/block-parser/state-errors/003_dash_in_object.nesl
+```nesl
+<<<<<<<<<nesl
+{
+  valid = R"""pv(ok)pv"""
+  - R"""pv(dash not allowed)pv"""
+  another = R"""pv(ok)pv"""
+}
+=========nesl
+```
+______________________________ nesl-test/tests/unit/block-parser/state-errors/004_non_string_in_multiline.json
+```json
+{
+  "errors": [
+    {
+      "line": 5,
+      "code": "invalid_context",
+      "message": "Only string literals allowed in multiline context",
+      "content": "    {",
+      "context": "  text = (\n    R\"\"\"pv(valid string)pv\"\"\"\n    {\n    R\"\"\"pv(another string)pv\"\"\"\n  )"
+    }
+  ]
+}
+```
+______________________________ nesl-test/tests/unit/block-parser/state-errors/004_non_string_in_multiline.nesl
+```nesl
+<<<<<<<<<nesl
+{
+  text = (
+    R"""pv(valid string)pv"""
+    {
+    R"""pv(another string)pv"""
+  )
+}
+=========nesl
+```
+______________________________ nesl-test/tests/unit/block-parser/state-errors/005_assignment_in_multiline.json
+```json
+{
+  "errors": [
+    {
+      "line": 5,
+      "code": "invalid_context",
+      "message": "Assignment syntax not allowed in multiline context",
+      "content": "    key = R\"\"\"pv(no assignments here)pv\"\"\"",
+      "context": "  text = (\n    R\"\"\"pv(valid)pv\"\"\"\n    key = R\"\"\"pv(no assignments here)pv\"\"\"\n    R\"\"\"pv(valid)pv\"\"\"\n  )"
+    }
+  ]
+}
+```
+______________________________ nesl-test/tests/unit/block-parser/state-errors/005_assignment_in_multiline.nesl
+```nesl
+<<<<<<<<<nesl
+{
+  text = (
+    R"""pv(valid)pv"""
+    key = R"""pv(no assignments here)pv"""
+    R"""pv(valid)pv"""
+  )
+}
+=========nesl
+```
+______________________________ nesl-test/tests/unit/block-parser/state-errors/006_wrong_closing_delimiter.json
+```json
+{
+  "errors": [
+    {
+      "line": 5,
+      "code": "delimiter_mismatch",
+      "message": "Expected ] but found }",
+      "content": "  }",
+      "context": "  array = [\n    - R\"\"\"pv(item)pv\"\"\"\n  }\n}\n=========nesl"
+    }
+  ]
+}
+```
+______________________________ nesl-test/tests/unit/block-parser/state-errors/006_wrong_closing_delimiter.nesl
+```nesl
+<<<<<<<<<nesl
+{
+  array = [
+    - R"""pv(item)pv"""
+  }
 }
 =========nesl
 ```
@@ -1642,11 +2354,11 @@ ______________________________ nesl-test/tests/unit/block-parser/structure-error
 {
   "errors": [
     {
-      "line": 1,
+      "line": 2,
       "code": "root_must_be_object",
       "message": "NESL blocks must contain a single root object. Found array instead",
       "content": "[",
-      "context": "[\n]"
+      "context": "<<<<<<<<<nesl\n[\n]\n=========nesl"
     }
   ]
 }
@@ -1662,11 +2374,11 @@ ______________________________ nesl-test/tests/unit/block-parser/structure-error
 {
   "errors": [
     {
-      "line": 1,
+      "line": 2,
       "code": "root_must_be_object",
       "message": "NESL blocks must contain a single root object. Found multiline instead",
       "content": "(",
-      "context": "(\n)"
+      "context": "<<<<<<<<<nesl\n(\n)\n=========nesl"
     }
   ]
 }
