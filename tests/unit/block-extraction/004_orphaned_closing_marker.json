@@ -5,7 +5,7 @@
       "line": 6,
       "code": "orphaned_closing_marker",
       "message": "Found =========nesl without matching <<<<<<<<<nesl",
-      "context": "{\n  key = R\"\"\"pv(looks like NESL but no opening marker)pv\"\"\"\n}\n=========nesl\n\nThis should error"
+      "context": "  key = R\"\"\"pv(looks like NESL but no opening marker)pv\"\"\"\n}\n=========nesl\n\nThis should error"
     }
   ]
 }
