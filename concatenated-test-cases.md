@@ -1381,7 +1381,7 @@ ______________________________ nesl-test/tests/unit/block-extraction/004_orphane
       "line": 6,
       "code": "orphaned_closing_marker",
       "message": "Found =========nesl without matching <<<<<<<<<nesl",
-      "context": "{\n  key = R\"\"\"pv(looks like NESL but no opening marker)pv\"\"\"\n}\n=========nesl\n\nThis should error"
+      "context": "  key = R\"\"\"pv(looks like NESL but no opening marker)pv\"\"\"\n}\n=========nesl\n\nThis should error"
     }
   ]
 }
@@ -1397,30 +1397,7 @@ Some initial text
 
 This should error
 ```
-______________________________ nesl-test/tests/unit/block-extraction/005_content_after_closing.json
-```json
-{
-  "blocks": [],
-  "errors": [
-    {
-      "line": 5,
-      "code": "content_between_closing_and_block_end",
-      "message": "No content allowed between closing delimiter } and =========nesl",
-      "context": "  key = R\"\"\"pv(value)pv\"\"\"\n}\nextra content here\n=========nesl"
-    }
-  ]
-}
-```
-______________________________ nesl-test/tests/unit/block-extraction/005_content_after_closing.nesl
-```nesl
-<<<<<<<<<nesl
-{
-  key = R"""pv(value)pv"""
-}
-extra content here
-=========nesl
-```
-______________________________ nesl-test/tests/unit/block-extraction/006_nested_block_markers.json
+______________________________ nesl-test/tests/unit/block-extraction/005_nested_block_markers.json
 ```json
 {
   "blocks": [
@@ -1432,7 +1409,7 @@ ______________________________ nesl-test/tests/unit/block-extraction/006_nested_
   "errors": []
 }
 ```
-______________________________ nesl-test/tests/unit/block-extraction/006_nested_block_markers.nesl
+______________________________ nesl-test/tests/unit/block-extraction/005_nested_block_markers.nesl
 ```nesl
 <<<<<<<<<nesl
 {
@@ -1442,7 +1419,7 @@ ______________________________ nesl-test/tests/unit/block-extraction/006_nested_
 }
 =========nesl
 ```
-______________________________ nesl-test/tests/unit/block-extraction/007_custom_markers.json
+______________________________ nesl-test/tests/unit/block-extraction/006_custom_markers.json
 ```json
 {
   "config": {
@@ -1462,7 +1439,7 @@ ______________________________ nesl-test/tests/unit/block-extraction/007_custom_
   "errors": []
 }
 ```
-______________________________ nesl-test/tests/unit/block-extraction/007_custom_markers.nesl
+______________________________ nesl-test/tests/unit/block-extraction/006_custom_markers.nesl
 ```nesl
 <<<START>>>
 {
@@ -1477,6 +1454,58 @@ Text between
   - R"""pv(second block)pv"""
 ]
 ===END===
+```
+______________________________ nesl-test/tests/unit/block-parser/basics/001_empty_object.json
+```json
+[
+  {}
+]
+```
+______________________________ nesl-test/tests/unit/block-parser/basics/001_empty_object.nesl
+```nesl
+<<<<<<<<<nesl
+{}
+=========nesl
+```
+______________________________ nesl-test/tests/unit/block-parser/basics/002_empty_array.json
+```json
+[
+  []
+]
+```
+______________________________ nesl-test/tests/unit/block-parser/basics/002_empty_array.nesl
+```nesl
+<<<<<<<<<nesl
+[]
+=========nesl
+```
+______________________________ nesl-test/tests/unit/block-parser/basics/003_empty_multiline.json
+```json
+[
+  ""
+]
+```
+______________________________ nesl-test/tests/unit/block-parser/basics/003_empty_multiline.nesl
+```nesl
+<<<<<<<<<nesl
+()
+=========nesl
+```
+______________________________ nesl-test/tests/unit/block-parser/basics/004_single_key.json
+```json
+[
+  {
+    "key": "value"
+  }
+]
+```
+______________________________ nesl-test/tests/unit/block-parser/basics/004_single_key.nesl
+```nesl
+<<<<<<<<<nesl
+{
+  key = R"""pv(value)pv"""
+}
+=========nesl
 ```
 ______________________________ nesl-test/tests/unit/string-literals/001_line_extraction.txt
 ```txt
