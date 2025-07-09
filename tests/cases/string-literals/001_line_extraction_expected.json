@@ -7,7 +7,7 @@
   {"value": "ends with )pv\"\"\""},
   {"value": "R\"\"\"pv(not actually nested)pv\"\"\""},
   {"value": "multiple )pv\"\"\" and )pv\"\"\" and even )pv\"\"\" patterns"},
-  {"error": "string_not_at_value_position"},
+  {"error": "string_not_found"},
   {"error": "content_after_string"},
   {"value": "indented string"},
   {"value": "deeply indented"},
