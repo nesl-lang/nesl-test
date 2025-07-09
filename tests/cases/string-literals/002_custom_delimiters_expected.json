@@ -7,7 +7,7 @@
     {"value": "simple"},
     {"value": "empty"},
     {"value": "contains ]%%% in middle"},
-    {"error": "string_not_found"},
+    {"error": "invalid_string_start"},
     {"error": "content_after_string"},
     {"value": "first]%%% %%%[second"},
     {"error": "string_unterminated"},
