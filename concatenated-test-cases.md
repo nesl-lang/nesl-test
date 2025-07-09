@@ -1,4 +1,4 @@
-______________________________ blocks/001_multiple_blocks.json
+______________________________ nesl-test/tests/cases/blocks/001_multiple_blocks.json
 ```json
 [
   {
@@ -12,7 +12,7 @@ ______________________________ blocks/001_multiple_blocks.json
   ]
 ]
 ```
-______________________________ blocks/001_multiple_blocks.nesl
+______________________________ nesl-test/tests/cases/blocks/001_multiple_blocks.nesl
 ```nesl
 <<<<<<<<<nesl
 {
@@ -32,7 +32,7 @@ ______________________________ blocks/001_multiple_blocks.nesl
 ]
 =========nesl
 ```
-______________________________ blocks/002_text_between_blocks.json
+______________________________ nesl-test/tests/cases/blocks/002_text_between_blocks.json
 ```json
 [
   {
@@ -43,7 +43,7 @@ ______________________________ blocks/002_text_between_blocks.json
   ]
 ]
 ```
-______________________________ blocks/002_text_between_blocks.nesl
+______________________________ nesl-test/tests/cases/blocks/002_text_between_blocks.nesl
 ```nesl
 This text before blocks is ignored
 
@@ -65,14 +65,14 @@ Should all be ignored
 
 Even text after last block
 ```
-______________________________ blocks/003_empty_block.json
+______________________________ nesl-test/tests/cases/blocks/003_empty_block.json
 ```json
 [
   {},
   []
 ]
 ```
-______________________________ blocks/003_empty_block.nesl
+______________________________ nesl-test/tests/cases/blocks/003_empty_block.nesl
 ```nesl
 <<<<<<<<<nesl
 {}
@@ -82,7 +82,7 @@ ______________________________ blocks/003_empty_block.nesl
 []
 =========nesl
 ```
-______________________________ core/001_basic_strings.json
+______________________________ nesl-test/tests/cases/core/001_basic_strings.json
 ```json
 [
   {
@@ -94,7 +94,7 @@ ______________________________ core/001_basic_strings.json
   }
 ]
 ```
-______________________________ core/001_basic_strings.nesl
+______________________________ nesl-test/tests/cases/core/001_basic_strings.nesl
 ```nesl
 <<<<<<<<<nesl
 {
@@ -106,7 +106,7 @@ ______________________________ core/001_basic_strings.nesl
 }
 =========nesl
 ```
-______________________________ core/002_empty_structures.json
+______________________________ nesl-test/tests/cases/core/002_empty_structures.json
 ```json
 [
   {
@@ -121,7 +121,7 @@ ______________________________ core/002_empty_structures.json
   }
 ]
 ```
-______________________________ core/002_empty_structures.nesl
+______________________________ nesl-test/tests/cases/core/002_empty_structures.nesl
 ```nesl
 <<<<<<<<<nesl
 {
@@ -136,7 +136,7 @@ ______________________________ core/002_empty_structures.nesl
 }
 =========nesl
 ```
-______________________________ core/003_simple_objects.json
+______________________________ nesl-test/tests/cases/core/003_simple_objects.json
 ```json
 [
   {
@@ -151,7 +151,7 @@ ______________________________ core/003_simple_objects.json
   }
 ]
 ```
-______________________________ core/003_simple_objects.nesl
+______________________________ nesl-test/tests/cases/core/003_simple_objects.nesl
 ```nesl
 <<<<<<<<<nesl
 {
@@ -166,7 +166,7 @@ ______________________________ core/003_simple_objects.nesl
 }
 =========nesl
 ```
-______________________________ core/004_simple_arrays.json
+______________________________ nesl-test/tests/cases/core/004_simple_arrays.json
 ```json
 [
   {
@@ -183,7 +183,7 @@ ______________________________ core/004_simple_arrays.json
   }
 ]
 ```
-______________________________ core/004_simple_arrays.nesl
+______________________________ nesl-test/tests/cases/core/004_simple_arrays.nesl
 ```nesl
 <<<<<<<<<nesl
 {
@@ -209,7 +209,7 @@ ______________________________ core/004_simple_arrays.nesl
 }
 =========nesl
 ```
-______________________________ core/005_multiline_strings.json
+______________________________ nesl-test/tests/cases/core/005_multiline_strings.json
 ```json
 [
   {
@@ -220,7 +220,7 @@ ______________________________ core/005_multiline_strings.json
   }
 ]
 ```
-______________________________ core/005_multiline_strings.nesl
+______________________________ nesl-test/tests/cases/core/005_multiline_strings.nesl
 ```nesl
 <<<<<<<<<nesl
 {
@@ -246,7 +246,7 @@ ______________________________ core/005_multiline_strings.nesl
 }
 =========nesl
 ```
-______________________________ core/006_nested_objects.json
+______________________________ nesl-test/tests/cases/core/006_nested_objects.json
 ```json
 [
   {
@@ -273,7 +273,7 @@ ______________________________ core/006_nested_objects.json
   }
 ]
 ```
-______________________________ core/006_nested_objects.nesl
+______________________________ nesl-test/tests/cases/core/006_nested_objects.nesl
 ```nesl
 <<<<<<<<<nesl
 {
@@ -300,7 +300,7 @@ ______________________________ core/006_nested_objects.nesl
 }
 =========nesl
 ```
-______________________________ core/007_nested_arrays.json
+______________________________ nesl-test/tests/cases/core/007_nested_arrays.json
 ```json
 [
   {
@@ -319,7 +319,7 @@ ______________________________ core/007_nested_arrays.json
   }
 ]
 ```
-______________________________ core/007_nested_arrays.nesl
+______________________________ nesl-test/tests/cases/core/007_nested_arrays.nesl
 ```nesl
 <<<<<<<<<nesl
 {
@@ -352,7 +352,7 @@ ______________________________ core/007_nested_arrays.nesl
 }
 =========nesl
 ```
-______________________________ core/008_mixed_nesting.json
+______________________________ nesl-test/tests/cases/core/008_mixed_nesting.json
 ```json
 [
   {
@@ -388,7 +388,7 @@ ______________________________ core/008_mixed_nesting.json
   }
 ]
 ```
-______________________________ core/008_mixed_nesting.nesl
+______________________________ nesl-test/tests/cases/core/008_mixed_nesting.nesl
 ```nesl
 <<<<<<<<<nesl
 {
@@ -436,7 +436,7 @@ ______________________________ core/008_mixed_nesting.nesl
 }
 =========nesl
 ```
-______________________________ custom-syntax/001_custom_delimiters.json
+______________________________ nesl-test/tests/cases/custom-syntax/001_custom_delimiters.json
 ```json
 [
   {
@@ -447,7 +447,7 @@ ______________________________ custom-syntax/001_custom_delimiters.json
   }
 ]
 ```
-______________________________ custom-syntax/001_custom_delimiters.nesl
+______________________________ nesl-test/tests/cases/custom-syntax/001_custom_delimiters.nesl
 ```nesl
 <<<START>>>
 {
@@ -458,7 +458,7 @@ ______________________________ custom-syntax/001_custom_delimiters.nesl
 }
 ===END===
 ```
-______________________________ custom-syntax/002_delimiter_collision.json
+______________________________ nesl-test/tests/cases/custom-syntax/002_delimiter_collision.json
 ```json
 [
   {
@@ -468,7 +468,7 @@ ______________________________ custom-syntax/002_delimiter_collision.json
   }
 ]
 ```
-______________________________ custom-syntax/002_delimiter_collision.nesl
+______________________________ nesl-test/tests/cases/custom-syntax/002_delimiter_collision.nesl
 ```nesl
 <<<START>>>
 {
@@ -478,7 +478,7 @@ ______________________________ custom-syntax/002_delimiter_collision.nesl
 }
 ===END===
 ```
-______________________________ edge-cases/001_string_with_delimiter.json
+______________________________ nesl-test/tests/cases/edge-cases/001_string_with_delimiter.json
 ```json
 [
   {
@@ -491,7 +491,7 @@ ______________________________ edge-cases/001_string_with_delimiter.json
   }
 ]
 ```
-______________________________ edge-cases/001_string_with_delimiter.nesl
+______________________________ nesl-test/tests/cases/edge-cases/001_string_with_delimiter.nesl
 ```nesl
 <<<<<<<<<nesl
 {
@@ -504,7 +504,7 @@ ______________________________ edge-cases/001_string_with_delimiter.nesl
 }
 =========nesl
 ```
-______________________________ edge-cases/002_unicode_keys.json
+______________________________ nesl-test/tests/cases/edge-cases/002_unicode_keys.json
 ```json
 [
   {
@@ -521,7 +521,7 @@ ______________________________ edge-cases/002_unicode_keys.json
   }
 ]
 ```
-______________________________ edge-cases/002_unicode_keys.nesl
+______________________________ nesl-test/tests/cases/edge-cases/002_unicode_keys.nesl
 ```nesl
 <<<<<<<<<nesl
 {
@@ -538,7 +538,7 @@ ______________________________ edge-cases/002_unicode_keys.nesl
 }
 =========nesl
 ```
-______________________________ edge-cases/003_unicode_values.json
+______________________________ nesl-test/tests/cases/edge-cases/003_unicode_values.json
 ```json
 [
   {
@@ -555,7 +555,7 @@ ______________________________ edge-cases/003_unicode_values.json
   }
 ]
 ```
-______________________________ edge-cases/003_unicode_values.nesl
+______________________________ nesl-test/tests/cases/edge-cases/003_unicode_values.nesl
 ```nesl
 <<<<<<<<<nesl
 {
@@ -572,7 +572,7 @@ ______________________________ edge-cases/003_unicode_values.nesl
 }
 =========nesl
 ```
-______________________________ edge-cases/004_whitespace_preservation.json
+______________________________ nesl-test/tests/cases/edge-cases/004_whitespace_preservation.json
 ```json
 [
   {
@@ -588,7 +588,7 @@ ______________________________ edge-cases/004_whitespace_preservation.json
   }
 ]
 ```
-______________________________ edge-cases/004_whitespace_preservation.nesl
+______________________________ nesl-test/tests/cases/edge-cases/004_whitespace_preservation.nesl
 ```nesl
 <<<<<<<<<nesl
 {
@@ -609,7 +609,7 @@ ______________________________ edge-cases/004_whitespace_preservation.nesl
 }
 =========nesl
 ```
-______________________________ edge-cases/005_duplicate_keys.json
+______________________________ nesl-test/tests/cases/edge-cases/005_duplicate_keys.json
 ```json
 [
   {
@@ -625,7 +625,7 @@ ______________________________ edge-cases/005_duplicate_keys.json
   }
 ]
 ```
-______________________________ edge-cases/005_duplicate_keys.nesl
+______________________________ nesl-test/tests/cases/edge-cases/005_duplicate_keys.nesl
 ```nesl
 <<<<<<<<<nesl
 {
@@ -646,7 +646,7 @@ ______________________________ edge-cases/005_duplicate_keys.nesl
 }
 =========nesl
 ```
-______________________________ edge-cases/006_deeply_nested_structures.json
+______________________________ nesl-test/tests/cases/edge-cases/006_deeply_nested_structures.json
 ```json
 [
   {
@@ -684,7 +684,7 @@ ______________________________ edge-cases/006_deeply_nested_structures.json
   }
 ]
 ```
-______________________________ edge-cases/006_deeply_nested_structures.nesl
+______________________________ nesl-test/tests/cases/edge-cases/006_deeply_nested_structures.nesl
 ```nesl
 <<<<<<<<<nesl
 {
@@ -725,7 +725,7 @@ ______________________________ edge-cases/006_deeply_nested_structures.nesl
 }
 =========nesl
 ```
-______________________________ edge-cases/007_whitespace_only_multiline.json
+______________________________ nesl-test/tests/cases/edge-cases/007_whitespace_only_multiline.json
 ```json
 [
   {
@@ -735,7 +735,7 @@ ______________________________ edge-cases/007_whitespace_only_multiline.json
   }
 ]
 ```
-______________________________ edge-cases/007_whitespace_only_multiline.nesl
+______________________________ nesl-test/tests/cases/edge-cases/007_whitespace_only_multiline.nesl
 ```nesl
 <<<<<<<<<nesl
 {
@@ -763,7 +763,7 @@ ______________________________ edge-cases/007_whitespace_only_multiline.nesl
 }
 =========nesl
 ```
-______________________________ edge-cases/008_multiple_delimiters_one_line.json
+______________________________ nesl-test/tests/cases/edge-cases/008_multiple_delimiters_one_line.json
 ```json
 [
   {
@@ -774,7 +774,7 @@ ______________________________ edge-cases/008_multiple_delimiters_one_line.json
   }
 ]
 ```
-______________________________ edge-cases/008_multiple_delimiters_one_line.nesl
+______________________________ nesl-test/tests/cases/edge-cases/008_multiple_delimiters_one_line.nesl
 ```nesl
 <<<<<<<<<nesl
 {
@@ -785,7 +785,7 @@ ______________________________ edge-cases/008_multiple_delimiters_one_line.nesl
 }
 =========nesl
 ```
-______________________________ edge-cases/009_block_markers_in_content.json
+______________________________ nesl-test/tests/cases/edge-cases/009_block_markers_in_content.json
 ```json
 [
   {
@@ -796,7 +796,7 @@ ______________________________ edge-cases/009_block_markers_in_content.json
   }
 ]
 ```
-______________________________ edge-cases/009_block_markers_in_content.nesl
+______________________________ nesl-test/tests/cases/edge-cases/009_block_markers_in_content.nesl
 ```nesl
 <<<<<<<<<nesl
 {
@@ -811,7 +811,7 @@ ______________________________ edge-cases/009_block_markers_in_content.nesl
 }
 =========nesl
 ```
-______________________________ edge-cases/010_empty_multiline_whitespace.json
+______________________________ nesl-test/tests/cases/edge-cases/010_empty_multiline_whitespace.json
 ```json
 [
   {
@@ -822,7 +822,7 @@ ______________________________ edge-cases/010_empty_multiline_whitespace.json
   }
 ]
 ```
-______________________________ edge-cases/010_empty_multiline_whitespace.nesl
+______________________________ nesl-test/tests/cases/edge-cases/010_empty_multiline_whitespace.nesl
 ```nesl
 <<<<<<<<<nesl
 {
@@ -846,7 +846,7 @@ ______________________________ edge-cases/010_empty_multiline_whitespace.nesl
 }
 =========nesl
 ```
-______________________________ errors/001_unterminated_string.json
+______________________________ nesl-test/tests/cases/errors/001_unterminated_string.json
 ```json
 {
   "errors": [
@@ -860,7 +860,7 @@ ______________________________ errors/001_unterminated_string.json
   ]
 }
 ```
-______________________________ errors/001_unterminated_string.nesl
+______________________________ nesl-test/tests/cases/errors/001_unterminated_string.nesl
 ```nesl
 <<<<<<<<<nesl
 {
@@ -870,7 +870,7 @@ ______________________________ errors/001_unterminated_string.nesl
 }
 =========nesl
 ```
-______________________________ errors/002_delimiter_mismatch.json
+______________________________ nesl-test/tests/cases/errors/002_delimiter_mismatch.json
 ```json
 {
   "errors": [
@@ -884,7 +884,7 @@ ______________________________ errors/002_delimiter_mismatch.json
   ]
 }
 ```
-______________________________ errors/002_delimiter_mismatch.nesl
+______________________________ nesl-test/tests/cases/errors/002_delimiter_mismatch.nesl
 ```nesl
 <<<<<<<<<nesl
 {
@@ -894,7 +894,7 @@ ______________________________ errors/002_delimiter_mismatch.nesl
 }
 =========nesl
 ```
-______________________________ errors/003_invalid_context.json
+______________________________ nesl-test/tests/cases/errors/003_invalid_context.json
 ```json
 {
   "errors": [
@@ -908,7 +908,7 @@ ______________________________ errors/003_invalid_context.json
   ]
 }
 ```
-______________________________ errors/003_invalid_context.nesl
+______________________________ nesl-test/tests/cases/errors/003_invalid_context.nesl
 ```nesl
 <<<<<<<<<nesl
 {
@@ -920,7 +920,7 @@ ______________________________ errors/003_invalid_context.nesl
 }
 =========nesl
 ```
-______________________________ errors/004_invalid_key.json
+______________________________ nesl-test/tests/cases/errors/004_invalid_key.json
 ```json
 {
   "errors": [
@@ -934,7 +934,7 @@ ______________________________ errors/004_invalid_key.json
   ]
 }
 ```
-______________________________ errors/004_invalid_key.nesl
+______________________________ nesl-test/tests/cases/errors/004_invalid_key.nesl
 ```nesl
 <<<<<<<<<nesl
 {
@@ -944,7 +944,7 @@ ______________________________ errors/004_invalid_key.nesl
 }
 =========nesl
 ```
-______________________________ errors/005_content_after_string.json
+______________________________ nesl-test/tests/cases/errors/005_content_after_string.json
 ```json
 {
   "errors": [
@@ -958,7 +958,7 @@ ______________________________ errors/005_content_after_string.json
   ]
 }
 ```
-______________________________ errors/005_content_after_string.nesl
+______________________________ nesl-test/tests/cases/errors/005_content_after_string.nesl
 ```nesl
 <<<<<<<<<nesl
 {
@@ -968,7 +968,7 @@ ______________________________ errors/005_content_after_string.nesl
 }
 =========nesl
 ```
-______________________________ errors/006_missing_block_wrapper.json
+______________________________ nesl-test/tests/cases/errors/006_missing_block_wrapper.json
 ```json
 {
   "errors": [
@@ -982,13 +982,13 @@ ______________________________ errors/006_missing_block_wrapper.json
   ]
 }
 ```
-______________________________ errors/006_missing_block_wrapper.nesl
+______________________________ nesl-test/tests/cases/errors/006_missing_block_wrapper.nesl
 ```nesl
 {
   key = R"""pv(no block wrapper)pv"""
 }
 ```
-______________________________ errors/007_content_between_closing_and_block_end.json
+______________________________ nesl-test/tests/cases/errors/007_content_between_closing_and_block_end.json
 ```json
 {
   "errors": [
@@ -1002,7 +1002,7 @@ ______________________________ errors/007_content_between_closing_and_block_end.
   ]
 }
 ```
-______________________________ errors/007_content_between_closing_and_block_end.nesl
+______________________________ nesl-test/tests/cases/errors/007_content_between_closing_and_block_end.nesl
 ```nesl
 <<<<<<<<<nesl
 {
@@ -1011,7 +1011,7 @@ ______________________________ errors/007_content_between_closing_and_block_end.
 some content here
 =========nesl
 ```
-______________________________ errors/008_unclosed_structure.json
+______________________________ nesl-test/tests/cases/errors/008_unclosed_structure.json
 ```json
 {
   "errors": [
@@ -1025,7 +1025,7 @@ ______________________________ errors/008_unclosed_structure.json
   ]
 }
 ```
-______________________________ errors/008_unclosed_structure.nesl
+______________________________ nesl-test/tests/cases/errors/008_unclosed_structure.nesl
 ```nesl
 <<<<<<<<<nesl
 {
@@ -1036,7 +1036,7 @@ ______________________________ errors/008_unclosed_structure.nesl
 }
 =========nesl
 ```
-______________________________ errors/009_bare_string_in_object.json
+______________________________ nesl-test/tests/cases/errors/009_bare_string_in_object.json
 ```json
 {
   "errors": [
@@ -1050,7 +1050,7 @@ ______________________________ errors/009_bare_string_in_object.json
   ]
 }
 ```
-______________________________ errors/009_bare_string_in_object.nesl
+______________________________ nesl-test/tests/cases/errors/009_bare_string_in_object.nesl
 ```nesl
 <<<<<<<<<nesl
 {
@@ -1060,7 +1060,7 @@ ______________________________ errors/009_bare_string_in_object.nesl
 }
 =========nesl
 ```
-______________________________ errors/010_dash_in_object.json
+______________________________ nesl-test/tests/cases/errors/010_dash_in_object.json
 ```json
 {
   "errors": [
@@ -1074,7 +1074,7 @@ ______________________________ errors/010_dash_in_object.json
   ]
 }
 ```
-______________________________ errors/010_dash_in_object.nesl
+______________________________ nesl-test/tests/cases/errors/010_dash_in_object.nesl
 ```nesl
 <<<<<<<<<nesl
 {
@@ -1084,7 +1084,7 @@ ______________________________ errors/010_dash_in_object.nesl
 }
 =========nesl
 ```
-______________________________ errors/011_eof_mid_structure.json
+______________________________ nesl-test/tests/cases/errors/011_eof_mid_structure.json
 ```json
 {
   "errors": [
@@ -1098,7 +1098,7 @@ ______________________________ errors/011_eof_mid_structure.json
   ]
 }
 ```
-______________________________ errors/011_eof_mid_structure.nesl
+______________________________ nesl-test/tests/cases/errors/011_eof_mid_structure.nesl
 ```nesl
 <<<<<<<<<nesl
 {
@@ -1106,7 +1106,7 @@ ______________________________ errors/011_eof_mid_structure.nesl
   nested = {
     item = R"""pv(incomplete)pv"""
 ```
-______________________________ errors/012_delimiter_in_multiline.json
+______________________________ nesl-test/tests/cases/errors/012_delimiter_in_multiline.json
 ```json
 {
   "errors": [
@@ -1120,7 +1120,7 @@ ______________________________ errors/012_delimiter_in_multiline.json
   ]
 }
 ```
-______________________________ errors/012_delimiter_in_multiline.nesl
+______________________________ nesl-test/tests/cases/errors/012_delimiter_in_multiline.nesl
 ```nesl
 <<<<<<<<<nesl
 {
@@ -1132,7 +1132,7 @@ ______________________________ errors/012_delimiter_in_multiline.nesl
 }
 =========nesl
 ```
-______________________________ errors/013_equals_in_key.json
+______________________________ nesl-test/tests/cases/errors/013_equals_in_key.json
 ```json
 {
   "errors": [
@@ -1146,7 +1146,7 @@ ______________________________ errors/013_equals_in_key.json
   ]
 }
 ```
-______________________________ errors/013_equals_in_key.nesl
+______________________________ nesl-test/tests/cases/errors/013_equals_in_key.nesl
 ```nesl
 <<<<<<<<<nesl
 {
@@ -1156,7 +1156,7 @@ ______________________________ errors/013_equals_in_key.nesl
 }
 =========nesl
 ```
-______________________________ recovery/001_multiple_syntax_errors.json
+______________________________ nesl-test/tests/cases/recovery/001_multiple_syntax_errors.json
 ```json
 {
   "errors": [
@@ -1191,7 +1191,7 @@ ______________________________ recovery/001_multiple_syntax_errors.json
   ]
 }
 ```
-______________________________ recovery/001_multiple_syntax_errors.nesl
+______________________________ nesl-test/tests/cases/recovery/001_multiple_syntax_errors.nesl
 ```nesl
 <<<<<<<<<nesl
 {
@@ -1204,7 +1204,7 @@ ______________________________ recovery/001_multiple_syntax_errors.nesl
 }
 =========nesl
 ```
-______________________________ recovery/002_fatal_vs_recoverable.json
+______________________________ nesl-test/tests/cases/recovery/002_fatal_vs_recoverable.json
 ```json
 {
   "errors": [
@@ -1218,7 +1218,7 @@ ______________________________ recovery/002_fatal_vs_recoverable.json
   ]
 }
 ```
-______________________________ recovery/002_fatal_vs_recoverable.nesl
+______________________________ nesl-test/tests/cases/recovery/002_fatal_vs_recoverable.nesl
 ```nesl
 <<<<<<<<<nesl
 {
@@ -1231,7 +1231,7 @@ ______________________________ recovery/002_fatal_vs_recoverable.nesl
 }
 =========nesl
 ```
-______________________________ recovery/003_context_errors.json
+______________________________ nesl-test/tests/cases/recovery/003_context_errors.json
 ```json
 {
   "errors": [
@@ -1259,7 +1259,7 @@ ______________________________ recovery/003_context_errors.json
   ]
 }
 ```
-______________________________ recovery/003_context_errors.nesl
+______________________________ nesl-test/tests/cases/recovery/003_context_errors.nesl
 ```nesl
 <<<<<<<<<nesl
 {
