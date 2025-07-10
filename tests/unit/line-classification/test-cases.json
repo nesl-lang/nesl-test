@@ -44,6 +44,6 @@
   "unknown_everything_else": [
     { "input": "R\"\"\"pv(test)pv\"\"\"", "expected": { "type": "unknown", "line": "R\"\"\"pv(test)pv\"\"\"" } },
     { "input": "random text", "expected": { "type": "unknown", "line": "random text" } },
-    { "input": "  string alone  ", "expected": { "type": "unknown", "line": "string alone" } }
+    { "input": "  string alone  ", "expected": { "type": "unknown", "line": "  string alone  " } }
   ]
 }
