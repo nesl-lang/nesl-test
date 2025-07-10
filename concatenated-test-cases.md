@@ -1156,6 +1156,44 @@ ______________________________ nesl-test/tests/integration/errors/013_equals_in_
 }
 =========nesl
 ```
+______________________________ nesl-test/tests/integration/errors/014_content_after_string_variants.json
+```json
+{
+  "errors": [
+    {
+      "line": 3,
+      "code": "content_after_string",
+      "message": "Non-whitespace content found after string literal closing delimiter",
+      "content": "  closing = R\"\"\"pv(value)pv\"\"\" }",
+      "context": "<<<<<<<<<nesl\n{\n  closing = R\"\"\"pv(value)pv\"\"\" }\n  garbage = R\"\"\"pv(value)pv\"\"\" extra\n  multiple = R\"\"\"pv(value)pv\"\"\" more stuff"
+    },
+    {
+      "line": 4,
+      "code": "content_after_string",
+      "message": "Non-whitespace content found after string literal closing delimiter",
+      "content": "  garbage = R\"\"\"pv(value)pv\"\"\" extra",
+      "context": "{\n  closing = R\"\"\"pv(value)pv\"\"\" }\n  garbage = R\"\"\"pv(value)pv\"\"\" extra\n  multiple = R\"\"\"pv(value)pv\"\"\" more stuff\n}"
+    },
+    {
+      "line": 5,
+      "code": "content_after_string",
+      "message": "Non-whitespace content found after string literal closing delimiter",
+      "content": "  multiple = R\"\"\"pv(value)pv\"\"\" more stuff",
+      "context": "  closing = R\"\"\"pv(value)pv\"\"\" }\n  garbage = R\"\"\"pv(value)pv\"\"\" extra\n  multiple = R\"\"\"pv(value)pv\"\"\" more stuff\n}\n=========nesl"
+    }
+  ]
+}
+```
+______________________________ nesl-test/tests/integration/errors/014_content_after_string_variants.nesl
+```nesl
+<<<<<<<<<nesl
+{
+  closing = R"""pv(value)pv""" }
+  garbage = R"""pv(value)pv""" extra
+  multiple = R"""pv(value)pv""" more stuff
+}
+=========nesl
+```
 ______________________________ nesl-test/tests/integration/recovery/001_multiple_syntax_errors.json
 ```json
 {
@@ -1747,6 +1785,82 @@ ______________________________ nesl-test/tests/unit/block-parser/edge-cases/007_
   nested = {
     deep = [
       - R"""pv(never closed)pv"""
+```
+______________________________ nesl-test/tests/unit/block-parser/edge-cases/010_no_space_assignment.json
+```json
+[
+  {
+    "key": "value",
+    "another": "test"
+  }
+]
+```
+______________________________ nesl-test/tests/unit/block-parser/edge-cases/010_no_space_assignment.nesl
+```nesl
+<<<<<<<<<nesl
+{
+  key=R"""pv(value)pv"""
+  another=R"""pv(test)pv"""
+}
+=========nesl
+```
+______________________________ nesl-test/tests/unit/block-parser/edge-cases/011_array_spacing_variations.json
+```json
+[
+  {
+    "items": ["no space", "multiple spaces", "single space"]
+  }
+]
+```
+______________________________ nesl-test/tests/unit/block-parser/edge-cases/011_array_spacing_variations.nesl
+```nesl
+<<<<<<<<<nesl
+{
+  items = [
+    -R"""pv(no space)pv"""
+    -    R"""pv(multiple spaces)pv"""
+    - R"""pv(single space)pv"""
+  ]
+}
+=========nesl
+```
+______________________________ nesl-test/tests/unit/block-parser/edge-cases/012_empty_structures_with_space.json
+```json
+[
+  {
+    "single": {},
+    "multiple": {},
+    "array": [],
+    "multi": ""
+  }
+]
+```
+______________________________ nesl-test/tests/unit/block-parser/edge-cases/012_empty_structures_with_space.nesl
+```nesl
+<<<<<<<<<nesl
+{
+  single = { }
+  multiple = {    }
+  array = [  ]
+  multi = (     )
+}
+=========nesl
+```
+______________________________ nesl-test/tests/unit/block-parser/edge-cases/013_trailing_spaces_after_closing.json
+```json
+[
+  {
+    "key": "value"
+  }
+]
+```
+______________________________ nesl-test/tests/unit/block-parser/edge-cases/013_trailing_spaces_after_closing.nesl
+```nesl
+<<<<<<<<<nesl
+{
+  key = R"""pv(value)pv"""
+}   
+=========nesl
 ```
 ______________________________ nesl-test/tests/unit/block-parser/nesting/001_object_in_object.json
 ```json
@@ -2452,6 +2566,152 @@ ______________________________ nesl-test/tests/unit/block-parser/structure-error
 ```nesl
 <<<<<<<<<nesl
 - R"""pv(dash not allowed at root)pv"""
+=========nesl
+```
+______________________________ nesl-test/tests/unit/block-parser/structure-errors/006_orphaned_closing_at_root.json
+```json
+{
+  "errors": [
+    {
+      "line": 2,
+      "code": "root_must_be_object",
+      "message": "NESL blocks must contain a single root object. Found ] instead",
+      "content": "]",
+      "context": "<<<<<<<<<nesl\n]\n=========nesl"
+    }
+  ]
+}
+```
+______________________________ nesl-test/tests/unit/block-parser/structure-errors/006_orphaned_closing_at_root.nesl
+```nesl
+<<<<<<<<<nesl
+]
+=========nesl
+```
+______________________________ nesl-test/tests/unit/block-parser/structure-errors/007_orphaned_paren_at_root.json
+```json
+{
+  "errors": [
+    {
+      "line": 2,
+      "code": "root_must_be_object",
+      "message": "NESL blocks must contain a single root object. Found ) instead",
+      "content": ")",
+      "context": "<<<<<<<<<nesl\n)\n=========nesl"
+    }
+  ]
+}
+```
+______________________________ nesl-test/tests/unit/block-parser/structure-errors/007_orphaned_paren_at_root.nesl
+```nesl
+<<<<<<<<<nesl
+)
+=========nesl
+```
+______________________________ nesl-test/tests/unit/block-parser/structure-errors/008_inline_object_with_content.json
+```json
+{
+  "errors": [
+    {
+      "line": 3,
+      "code": "inline_structure_not_allowed",
+      "message": "Structure delimiters must be on their own lines",
+      "content": "  data = { key = R\"\"\"pv(value)pv\"\"\" }",
+      "context": "<<<<<<<<<nesl\n{\n  data = { key = R\"\"\"pv(value)pv\"\"\" }\n}\n=========nesl"
+    }
+  ]
+}
+```
+______________________________ nesl-test/tests/unit/block-parser/structure-errors/008_inline_object_with_content.nesl
+```nesl
+<<<<<<<<<nesl
+{
+  data = { key = R"""pv(value)pv""" }
+}
+=========nesl
+```
+______________________________ nesl-test/tests/unit/block-parser/structure-errors/009_inline_array_with_content.json
+```json
+{
+  "errors": [
+    {
+      "line": 3,
+      "code": "inline_structure_not_allowed",
+      "message": "Structure delimiters must be on their own lines",
+      "content": "  items = [ - R\"\"\"pv(item)pv\"\"\" ]",
+      "context": "<<<<<<<<<nesl\n{\n  items = [ - R\"\"\"pv(item)pv\"\"\" ]\n}\n=========nesl"
+    }
+  ]
+}
+```
+______________________________ nesl-test/tests/unit/block-parser/structure-errors/009_inline_array_with_content.nesl
+```nesl
+<<<<<<<<<nesl
+{
+  items = [ - R"""pv(item)pv""" ]
+}
+=========nesl
+```
+______________________________ nesl-test/tests/unit/block-parser/structure-errors/010_opening_delimiter_with_content.json
+```json
+{
+  "errors": [
+    {
+      "line": 2,
+      "code": "inline_structure_not_allowed",
+      "message": "Structure delimiters must be on their own lines",
+      "content": "{ key = R\"\"\"pv(starts on same line)pv\"\"\"",
+      "context": "<<<<<<<<<nesl\n{ key = R\"\"\"pv(starts on same line)pv\"\"\"\n}\n=========nesl"
+    }
+  ]
+}
+```
+______________________________ nesl-test/tests/unit/block-parser/structure-errors/010_opening_delimiter_with_content.nesl
+```nesl
+<<<<<<<<<nesl
+{ key = R"""pv(starts on same line)pv"""
+}
+=========nesl
+```
+______________________________ nesl-test/tests/unit/block-parser/structure-errors/011_orphaned_object_closing_at_root.json
+```json
+{
+  "errors": [
+    {
+      "line": 2,
+      "code": "root_must_be_object",
+      "message": "NESL blocks must contain a single root object. Found } instead",
+      "content": "}",
+      "context": "<<<<<<<<<nesl\n}\n=========nesl"
+    }
+  ]
+}
+```
+______________________________ nesl-test/tests/unit/block-parser/structure-errors/011_orphaned_object_closing_at_root.nesl
+```nesl
+<<<<<<<<<nesl
+}
+=========nesl
+```
+______________________________ nesl-test/tests/unit/block-parser/structure-errors/012_assignment_at_root.json
+```json
+{
+  "errors": [
+    {
+      "line": 2,
+      "code": "root_must_be_object",
+      "message": "NESL blocks must contain a single root object. Found assignment instead",
+      "content": "key = R\"\"\"pv(value)pv\"\"\"",
+      "context": "<<<<<<<<<nesl\nkey = R\"\"\"pv(value)pv\"\"\"\n}\n=========nesl"
+    }
+  ]
+}
+```
+______________________________ nesl-test/tests/unit/block-parser/structure-errors/012_assignment_at_root.nesl
+```nesl
+<<<<<<<<<nesl
+key = R"""pv(value)pv"""
+}
 =========nesl
 ```
 ______________________________ nesl-test/tests/unit/string-literals/001_line_extraction.txt
